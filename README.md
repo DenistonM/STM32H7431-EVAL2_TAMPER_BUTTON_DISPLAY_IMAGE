@@ -57,6 +57,7 @@ i have uploaded display_image.h file in repositry ,you can access by using that,
 
 Edit 1: 
 change
+
 #include "image_320_240_jpg.h" to
 c
 #include "display_image.h"
@@ -87,8 +88,11 @@ c
   }
   xPos = (LCD_X_Size - JPEG_Info.ImageWidth)/2;
   yPos = (LCD_Y_Size - JPEG_Info.ImageHeight)/2;
+  
 
-Edit 4: in DMA2D_CopyBuffer, change LCD_Y_Size to LCD_X_Size
+Edit 4:
+
+   in DMA2D_CopyBuffer, change LCD_Y_Size to LCD_X_Size
 
 c
   destination = (uint32_t)pDst + ((y * LCD_X_Size) + x) * 4;
