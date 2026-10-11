@@ -60,12 +60,14 @@ change
 
 #include "image_320_240_jpg.h" to
 c
+
 #include "display_image.h"
 
 
 Edit 2: replace the decode call after LCD_BriefDisplay(); with
 
 c
+
   __HAL_RCC_GPIOC_CLK_ENABLE();
   GPIO_InitTypeDef tamper = {0};
   tamper.Pin  = GPIO_PIN_13;
@@ -82,6 +84,7 @@ c
 Edit 3: replace the xPos and yPos lines with
 
 c
+
   if ((LCD_X_Size < JPEG_Info.ImageWidth) || (LCD_Y_Size < JPEG_Info.ImageHeight))
   {
     Error_Handler();
@@ -95,6 +98,7 @@ Edit 4:
    in DMA2D_CopyBuffer, change LCD_Y_Size to LCD_X_Size
 
 c
+
   destination = (uint32_t)pDst + ((y * LCD_X_Size) + x) * 4;
 
   
