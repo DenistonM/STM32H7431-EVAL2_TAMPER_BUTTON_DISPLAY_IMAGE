@@ -1,3 +1,6 @@
+Controlling an Display using the tamper button on the STM32H743I-EVAL2 development board.
+
+
 Part 1: Install the tools (once)
 
 STM32CubeIDE. Download it from st.com (STM32CubeIDE page) and install it with the defaults. It includes the compiler, the debugger and the ST-LINK driver. ST may ask you to sign in with a free myST account to download.
