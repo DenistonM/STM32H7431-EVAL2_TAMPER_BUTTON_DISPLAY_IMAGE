@@ -47,8 +47,61 @@ Don’t move or rename the firmware package afterwards, or the project stops bui
 Part 3: 
 Add the image and edit the code
 
+
+
+Part 3: Add the image and edit the code
+
 Drag display_image.h (the image file you share with them) onto the folder in Project Explorer that contains main.h, and choose Copy files.
 
 i have uploaded display_image.h file in repositry ,you can access by using that,in that you just convert you image into byte by using online free website,and copy that byte array for display_image.h.
+
+Edit 1: 
+change
+#include "image_320_240_jpg.h" to
+c
+#include "display_image.h"
+
+
+Edit 2: replace the decode call after LCD_BriefDisplay(); with
+
+c
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  GPIO_InitTypeDef tamper = {0};
+  tamper.Pin  = GPIO_PIN_13;
+  tamper.Mode = GPIO_MODE_INPUT;
+  tamper.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &tamper);
+
+  while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != GPIO_PIN_RESET)
+  {
+  }
+
+  JPEG_Decode_DMA(&JPEG_Handle, (uint32_t)display_jpeg, DISPLAY_JPEG_SIZE, JPEG_OUTPUT_DATA_BUFFER);
+
+Edit 3: replace the xPos and yPos lines with
+
+c
+  if ((LCD_X_Size < JPEG_Info.ImageWidth) || (LCD_Y_Size < JPEG_Info.ImageHeight))
+  {
+    Error_Handler();
+  }
+  xPos = (LCD_X_Size - JPEG_Info.ImageWidth)/2;
+  yPos = (LCD_Y_Size - JPEG_Info.ImageHeight)/2;
+
+Edit 4: in DMA2D_CopyBuffer, change LCD_Y_Size to LCD_X_Size
+
+c
+  destination = (uint32_t)pDst + ((y * LCD_X_Size) + x) * 4;
+
+  
+Part 4: Build, run and test
+
+Press Ctrl+S, then Project → Clean, then click the hammer icon. You want 0 errors.
+
+Select the project, then use bug icon arrow → Debug As → STM32 C/C++ Application → OK.
+
+When it stops at main(), press F8.
+
+The LCD shows the blue ST header. Press the Tamper button, and the image appears.
 
 
