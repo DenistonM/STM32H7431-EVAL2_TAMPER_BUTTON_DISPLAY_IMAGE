@@ -1,23 +1,36 @@
 Part 1: Install the tools (once)
 
 STM32CubeIDE. Download it from st.com (STM32CubeIDE page) and install it with the defaults. It includes the compiler, the debugger and the ST-LINK driver. ST may ask you to sign in with a free myST account to download.
+
 STM32CubeMX. Newer CubeIDE versions include it. If yours doesn’t, install STM32CubeMX from st.com too. It is only used to download the firmware package.
 The STM32H7 firmware package (STM32Cube FW_H7).
+
 Open STM32CubeMX and go to Help → Manage embedded software packages.
+
 Open the STM32H7 section, tick STM32Cube MCU Package for STM32H7 Series, version 1.13.0, and click Install.
+
 This package contains the example, the drivers and the LCD code, so there is nothing else to install.
+
 Hardware. 
 Connect the ST-LINK USB port of the STM32H743I-EVAL board to the PC and power the board. Windows should recognize the ST-LINK automatically.
 
 Part 2: Open the example
 
 In CubeIDE, go to File → Import → General → Existing Projects into Workspace → Next.
+
 Click Browse and find the firmware package folder. If you don’t know where it is, open CubeMX, go to Help → Updater Settings, and read the Repository Folder.
+
 Inside the package, open Projects → STM32H743I-EVAL → Examples → JPEG → JPEG_DecodingFromFLASH_DMA → STM32CubeIDE and select that folder.
+
 Tick the project, untick “Copy projects into workspace”, and click Finish.
+
 Don’t move or rename the firmware package afterwards, or the project stops building.
+
 Part 3: 
 Add the image and edit the code
+
 Drag display_image.h (the image file you share with them) onto the folder in Project Explorer that contains main.h, and choose Copy files.
-i have uploaded display_image.h file in repositry ,you can access by using that.
+
+i have uploaded display_image.h file in repositry ,you can access by using that,in that you just convert you image into byte by using online free website,and copy that byte array for display_image.h.
+
 
