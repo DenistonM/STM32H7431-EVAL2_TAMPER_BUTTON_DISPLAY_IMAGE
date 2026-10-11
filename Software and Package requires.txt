@@ -1,4 +1,5 @@
 Part 1: Install the tools (once)
+
 STM32CubeIDE. Download it from st.com (STM32CubeIDE page) and install it with the defaults. It includes the compiler, the debugger and the ST-LINK driver. ST may ask you to sign in with a free myST account to download.
 
 
@@ -16,4 +17,6 @@ Open the STM32H7 section, tick STM32Cube MCU Package for STM32H7 Series, version
 This package contains the example, the drivers and the LCD code, so there is nothing else to install.
 
 
-Hardware. Connect the ST-LINK USB port of the STM32H743I-EVAL board to the PC and power the board. Windows should recognize the ST-LINK automatically.
+Hardware.
+
+Connect the ST-LINK USB port of the STM32H743I-EVAL board to the PC and power the board. Windows should recognize the ST-LINK automatically.
