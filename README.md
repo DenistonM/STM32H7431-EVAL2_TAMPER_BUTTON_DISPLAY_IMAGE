@@ -14,6 +14,24 @@ This package contains the example, the drivers and the LCD code, so there is not
 Hardware. 
 Connect the ST-LINK USB port of the STM32H743I-EVAL board to the PC and power the board. Windows should recognize the ST-LINK automatically.
 
+Steps in CubeMX
+
+File → New Project → Board Selector → STM32H743I-EVAL2, then click Start Project. Answer Yes to default initialization.
+
+In System Core → GPIO, check the two pins:
+
+TAMPER (PC13): mode GPIO_Input, Pull-up.
+
+LED1_RGB [LD1_Green] (PF10): mode Output Push Pull, no pull, initial level Low.
+
+Check that RTC has no green tick, so it doesn’t take over PC13.
+
+In Project Manager, set the name Tamper_Test, choose a short folder path, set Toolchain / IDE to STM32CubeIDE, and click GENERATE CODE.
+
+In CubeIDE, use File → Import → STM32CubeMX/STM32CubeIDE Project and select the project folder.
+
+Open Core → Inc → main.h to find the pin names. They are TAMPER_Pin, TAMPER_GPIO_Port, LED1_RGB_Pin and LED1_RGB_GPIO_Port. The code (in Core/Src/main.c) Add these two lines in the USER CODE BEGIN PD section:
+
 Part 2: Open the example
 
 In CubeIDE, go to File → Import → General → Existing Projects into Workspace → Next.
