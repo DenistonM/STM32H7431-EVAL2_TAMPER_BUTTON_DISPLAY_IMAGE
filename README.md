@@ -18,7 +18,7 @@ Hardware.
 Connect the ST-LINK USB port of the STM32H743I-EVAL board to the PC and power the board. Windows should recognize the ST-LINK automatically.
 
 Steps in CubeMX
-
+In cubemx > Help > Manage embedded software packages > STM32Cube MCU Packages > STM32H7 > STM32H7 Series 1.13.0
 File → New Project → Board Selector → STM32H743I-EVAL2, then click Start Project. Answer Yes to default initialization.
 
 In System Core → GPIO, check the two pins:
